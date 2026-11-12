@@ -76,8 +76,13 @@ The tests check only visible behavior: what the rules, the record and the checko
 3. Open `FlatDiscount.java`. Make its constructor call `super("flat discount")` as its first statement.
    Then implement `apply`: the price minus the amount, never below 0. Keep `@Override` on it, so the compiler guarantees you really override.
 4. Notice what `FlatDiscount` gets without writing it: `describe()` from the abstract class, and `label()` from the interface's default method.
-5. If you see `constructor NamedRule in class NamedRule cannot be applied`, a subclass constructor does not call `super("...")` first.
-6. While it is wrong, you see lines such as `Task 1: new FlatDiscount(5).apply(20.0)`.
+5. While it is wrong, you see lines such as `Task 1: new FlatDiscount(5).apply(20.0)`.
+
+<details><summary>Hint</summary>
+
+If you see `constructor NamedRule in class NamedRule cannot be applied`, a subclass constructor does not call `super("...")` first.
+
+</details>
 
 ### Task 2: implement the interface directly
 
@@ -91,10 +96,15 @@ The tests check only visible behavior: what the rules, the record and the checko
 
 1. Open `Order.java` and replace the whole class with a record: `public record Order(String id, double amount) { ... }`.
    Delete the hand-written constructor and accessors. The record generates the constructor, `id()`, `amount()`, `equals`, `hashCode` and `toString` itself.
-   If `Order.java` stops compiling, check that the old constructor and accessors are gone.
 2. Add a compact canonical constructor that rejects a negative amount. Inside the record body, write `public Order { if (amount < 0) ... }`.
    It has no parameter list and no assignments: the record assigns its final fields after your checks pass.
 3. The tests also show what you got for free: two orders with the same data are equal, and `toString()` is `Order[id=A1, amount=20.0]`.
+
+<details><summary>Hint</summary>
+
+If `Order.java` stops compiling, check that the old constructor and accessors are gone.
+
+</details>
 
 ### Task 4: compose the checkout
 
