@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 /**
  * Tasks 5 and 6: the shop's rule toolbox - static factory methods.

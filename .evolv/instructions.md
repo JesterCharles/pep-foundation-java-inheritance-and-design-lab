@@ -1,7 +1,7 @@
 # Inheritance and Design lab: interchangeable price rules
 
 A small shop's checkout needs price rules it can swap. An earlier version grew one `Checkout` subclass per promotion.
-You build the design that replaced it, in six linked tasks in the package `pricing`:
+You build the design that replaced it, in six linked tasks in the package `exercise`:
 - one `PriceRule` interface;
 - an abstract base for the named rules;
 - a record for the order data;
@@ -12,7 +12,7 @@ Along the way you practise inheritance, interfaces and default methods, records,
 
 ## Quick start
 
-1. Open the lab project. The files you edit are in `src/main/java/pricing/`; the checklist below names them.
+1. Open the lab project. The files you edit are in `src/main/java/exercise/`; the checklist below names them.
 2. Select **Run Tests** before you change anything.
 
    **All 6 tests fail at first. That is expected: the TODOs are not done yet.**
@@ -30,7 +30,7 @@ In words: open the project, run the tests, read which tasks fail, complete one t
 
 ## Checklist
 
-Every file is in `src/main/java/pricing/`, and each task is marked with a `TODO` comment:
+Every file is in `src/main/java/exercise/`, and each task is marked with a `TODO` comment:
 
 - [ ] Task 1: `NamedRule.java` and `FlatDiscount.java` (an abstract class and a subclass)
 - [ ] Task 2: `PercentOff.java` (implementing an interface directly)
@@ -42,7 +42,7 @@ Every file is in `src/main/java/pricing/`, and each task is marked with a `TODO`
 A task is done when no failure message starts with its number.
 Edit only those six files.
 - `PriceRule.java` is the complete contract that every task builds on.
-- The tests in `src/test/java/pricing/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` and `expected/test-summary.txt` as they are.
+- The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` and `expected/test-summary.txt` as they are.
 
 ## Task steps
 
@@ -132,7 +132,7 @@ The checkout prints one line per rule. In a terminal, from the project folder:
 
 ```
 mvn -q compile
-java -cp target/classes pricing.Checkout
+java -cp target/classes exercise.Checkout
 ```
 
 `expected/test-summary.txt` shows the finished result, including the eight lines the program prints.

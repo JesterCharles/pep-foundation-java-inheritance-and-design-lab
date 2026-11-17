@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 /**
  * Task 4: the checkout itself.

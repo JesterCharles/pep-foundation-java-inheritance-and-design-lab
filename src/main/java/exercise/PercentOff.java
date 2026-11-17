@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 /**
  * Task 2: a rule that takes a percentage off, implementing the interface

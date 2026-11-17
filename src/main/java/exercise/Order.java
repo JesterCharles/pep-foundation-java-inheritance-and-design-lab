@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 /**
  * Task 3: one order at the checkout, as a record.

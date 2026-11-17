@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * behavior: what the rules, record and checkout return.
  */
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class PricingTest {
+class VisibleTests {
 
     @Test
     void task1AbstractBase() {

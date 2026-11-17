@@ -1,7 +1,7 @@
 # Inheritance and Design lab: interchangeable price rules
 
 A small shop's checkout needs price rules it can swap. An earlier version grew one `Checkout` subclass per promotion.
-You build the design that replaced it, in six linked tasks in the package `pricing`:
+You build the design that replaced it, in six linked tasks in the package `exercise`:
 - one `PriceRule` interface;
 - an abstract base for the named rules;
 - a record for the order data;
@@ -18,17 +18,17 @@ This repository follows the Exa coding-lab scaffold for Java.
 
 | Path | What it is |
 |---|---|
-| `src/main/java/pricing/Checkout.java` | Lab source |
-| `src/main/java/pricing/FlatDiscount.java` | Lab source |
-| `src/main/java/pricing/NamedRule.java` | Lab source |
-| `src/main/java/pricing/Order.java` | Lab source |
-| `src/main/java/pricing/PercentOff.java` | Lab source |
-| `src/main/java/pricing/PriceRule.java` | Lab source |
-| `src/main/java/pricing/Rules.java` | Lab source |
-| `src/test/java/pricing/PricingTest.java` | Visible tests |
+| `src/main/java/exercise/Checkout.java` | Lab source |
+| `src/main/java/exercise/FlatDiscount.java` | Lab source |
+| `src/main/java/exercise/NamedRule.java` | Lab source |
+| `src/main/java/exercise/Order.java` | Lab source |
+| `src/main/java/exercise/PercentOff.java` | Lab source |
+| `src/main/java/exercise/PriceRule.java` | Lab source |
+| `src/main/java/exercise/Rules.java` | Lab source |
+| `src/test/java/exercise/VisibleTests.java` | Visible tests |
 | `.evolv/instructions.md` | Learner instructions |
 | `.evolv/grade.yml` | Grading manifest, used by Run Tests and by the grader |
-| `pom.xml` | Maven build: Java 17 and JUnit 5.11.3, matching the scaffold |
+| `pom.xml` | Maven build, identical to the scaffold's: Java 17 and JUnit 5.11.3 |
 | `Dockerfile` | Image for local Run Tests; warms the Maven cache |
 | `expected/test-summary.txt` | The result of a finished lab |
 
