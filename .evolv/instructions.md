@@ -15,15 +15,16 @@ Along the way you practise inheritance, interfaces and default methods, records,
 1. Open the lab project. The files you edit are in `src/main/java/exercise/`; the checklist below names them.
 2. Select **Run Tests** before you change anything.
 
-   **All 6 tests fail at first. That is expected: the TODOs are not done yet.**
+   **All 6 visible tests fail at first. That is expected: the TODOs are not done yet.**
    Every failure message starts with its task number, such as `Task 1:`.
 3. Read `PriceRule.java` first, then work through the checklist below in order. After each task, select **Run Tests** again and read the remaining `Task N:` messages.
-4. **You are finished when all 6 tests pass.** Then select **Submit**.
+4. **You are finished when all 6 visible tests pass.** Then select **Submit**.
+   Submitting also runs held-out tests you can't see.
 
 ```
-OPEN project -> RUN TESTS: 6 fail (expected)
+OPEN project -> RUN TESTS: 6 visible tests fail (expected)
   -> read PriceRule.java -> READ the "Task N:" messages -> EDIT the next TODO -> RUN TESTS again
-  -> repeat for Tasks 1-6 -> SUBMIT when all 6 tests pass
+  -> repeat for Tasks 1-6 -> SUBMIT when all 6 visible tests pass
 ```
 
 In words: open the project, run the tests, read which tasks fail, complete one task's TODO, run the tests again, and submit when they all pass.
@@ -42,12 +43,13 @@ Every file is in `src/main/java/exercise/`, and each task is marked with a `TODO
 A task is done when no failure message starts with its number.
 Edit only those six files.
 - `PriceRule.java` is the complete contract that every task builds on.
-- The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` and `expected/test-summary.txt` as they are.
+- The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` as it is.
 
 ## Task steps
 
 `PriceRule.java` is complete: it has one abstract method, `apply`, and one default method, `label`.
 The tests check only visible behavior: what the rules, the record and the checkout return.
+Run Tests runs the visible tests. Submit also runs held-out tests you can't see: they try more inputs, including edge cases such as boundaries and prices that would drop below 0, so make each rule correct for every input its comment describes, not only the ones the visible tests try.
 
 ### Task 1: the abstract base and the first named rule
 
@@ -135,7 +137,18 @@ mvn -q compile
 java -cp target/classes exercise.Checkout
 ```
 
-`expected/test-summary.txt` shows the finished result, including the eight lines the program prints.
+When every task is done, it prints these eight lines:
+
+```
+Flat: 15.0
+Percent: 18.0
+Lambda: 20.0
+Capped: 12.0
+Coded: 15.0
+Labels: price rule / percent off
+Describe: flat discount
+Order: Order[id=A1, amount=20.0]
+```
 
 ## Troubleshooting
 
