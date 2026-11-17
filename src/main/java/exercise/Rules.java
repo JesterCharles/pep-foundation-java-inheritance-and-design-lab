@@ -12,7 +12,7 @@ public final class Rules {
 
     // Task 5a (anonymous class, then lambda): a rule that caps the price at
     // max - the price itself under the cap, otherwise max. Write it TWICE, as
-    // the lab instructions say: first as an anonymous new PriceRule() { ... } class,
+    // the lab README says: first as an anonymous new PriceRule() { ... } class,
     // run the tests, then shrink it to a lambda - PriceRule has one abstract
     // method, so a lambda can be the whole implementation.
     public static PriceRule capAt(double max) {
