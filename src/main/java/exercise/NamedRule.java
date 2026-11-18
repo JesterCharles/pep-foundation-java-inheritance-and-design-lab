@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 /**
  * Task 1a: the shared base of the named price rules.

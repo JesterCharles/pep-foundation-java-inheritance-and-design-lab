@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 /**
  * The contract every price rule of the shop's checkout fulfils: take a price,

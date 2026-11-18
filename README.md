@@ -1,7 +1,7 @@
 # Inheritance and Design lab: interchangeable price rules
 
 A small shop's checkout needs price rules it can swap. An earlier version grew one `Checkout` subclass per promotion.
-You build the design that replaced it, in six linked tasks in the package `pricing`:
+You build the design that replaced it, in six linked tasks in the package `exercise`:
 - one `PriceRule` interface;
 - an abstract base for the named rules;
 - a record for the order data;
@@ -12,43 +12,26 @@ Along the way you practise inheritance, interfaces and default methods, records,
 
 ## Quick start
 
-The lab needs JDK 25 and Apache Maven 3.9 or later in the terminal. Troubleshooting shows how to check.
+1. Open the lab project. The files you edit are in `src/main/java/exercise/`; the checklist below names them.
+2. Select **Run Tests** before you change anything.
 
-1. Open the lab project you were given in VS Code, then open its integrated terminal: **Terminal > New Terminal**.
-2. Go into the project folder. Every command in this lab runs there:
-
-   ```
-   cd starter
-   ```
-
-3. Before the first test run, download the lab's libraries once. This needs the internet, and prints nothing when it works:
-
-   ```
-   mvn -q dependency:go-offline
-   ```
-
-4. Run the tests before you change anything:
-
-   ```
-   mvn -q -o test
-   ```
-
-   **All 6 tests fail at first. That is expected: the TODOs are not done yet.**
-   The output ends with `Tests run: 6, Failures: 6`, and every failure line starts with its task number, such as `Task 1:`.
-5. Read `PriceRule.java` first, then work through the checklist below in order. After each task, run `mvn -q -o test` again and read the remaining `Task N:` lines.
-6. **You are finished when `mvn -q -o test` prints nothing at all.**
+   **All 6 visible tests fail at first. That is expected: the TODOs are not done yet.**
+   Every failure message starts with its task number, such as `Task 1:`.
+3. Read `PriceRule.java` first, then work through the checklist below in order. After each task, select **Run Tests** again and read the remaining `Task N:` messages.
+4. **You are finished when all 6 visible tests pass.** Then select **Submit**.
+   Submitting also runs held-out tests you can't see.
 
 ```
-OPEN project -> cd starter -> setup (once) -> RUN tests: 6 fail (expected)
-  -> read PriceRule.java -> READ the "Task N:" lines -> EDIT the next TODO -> RUN tests again
-  -> repeat for Tasks 1-6 -> STOP when the test run prints nothing
+OPEN project -> RUN TESTS: 6 visible tests fail (expected)
+  -> read PriceRule.java -> READ the "Task N:" messages -> EDIT the next TODO -> RUN TESTS again
+  -> repeat for Tasks 1-6 -> SUBMIT when all 6 visible tests pass
 ```
 
-In words: open the project, run the tests, read which tasks fail, complete one task's TODO, run the tests again, and stop when they print nothing.
+In words: open the project, run the tests, read which tasks fail, complete one task's TODO, run the tests again, and submit when they all pass.
 
 ## Checklist
 
-Every file is in `starter/src/main/java/pricing/`, and each task is marked with a `TODO` comment:
+Every file is in `src/main/java/exercise/`, and each task is marked with a `TODO` comment:
 
 - [ ] Task 1: `NamedRule.java` and `FlatDiscount.java` (an abstract class and a subclass)
 - [ ] Task 2: `PercentOff.java` (implementing an interface directly)
@@ -57,15 +40,16 @@ Every file is in `starter/src/main/java/pricing/`, and each task is marked with 
 - [ ] Task 5: `Rules.java`, `capAt` and `onlyWhen` (anonymous classes, then lambdas)
 - [ ] Task 6: `Rules.java`, `forCode` (a static factory)
 
-A task is done when no failure line starts with its number.
+A task is done when no failure message starts with its number.
 Edit only those six files.
 - `PriceRule.java` is the complete contract that every task builds on.
-- The tests in `tests/pricing/`, the build file `starter/pom.xml` and `expected/test-summary.txt` stay as they are.
+- The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` as it is.
 
 ## Task steps
 
 `PriceRule.java` is complete: it has one abstract method, `apply`, and one default method, `label`.
 The tests check only visible behavior: what the rules, the record and the checkout return.
+Run Tests runs the visible tests. Submit also runs held-out tests you can't see: they try more inputs, including edge cases such as boundaries and prices that would drop below 0, so make each rule correct for every input its comment describes, not only the ones the visible tests try.
 
 ### Task 1: the abstract base and the first named rule
 
@@ -76,7 +60,7 @@ The tests check only visible behavior: what the rules, the record and the checko
 3. Open `FlatDiscount.java`. Make its constructor call `super("flat discount")` as its first statement.
    Then implement `apply`: the price minus the amount, never below 0. Keep `@Override` on it, so the compiler guarantees you really override.
 4. Notice what `FlatDiscount` gets without writing it: `describe()` from the abstract class, and `label()` from the interface's default method.
-5. While it is wrong, you see lines such as `Task 1: new FlatDiscount(5).apply(20.0)`.
+5. While it is wrong, you see messages such as `Task 1: new FlatDiscount(5).apply(20.0)`.
 
 <details><summary>Hint</summary>
 
@@ -144,26 +128,28 @@ If you use an AI assistant, ask it to explain, not to answer.
 "Why does my compact canonical constructor not compile?" teaches you records; "write the pricing package for me" does not.
 Check any explanation with a test run before you trust it.
 
-## Run the program
+## Run the program (optional)
 
-The checkout prints one line per rule. From `starter`:
+The checkout prints one line per rule. In a terminal, from the project folder:
 
 ```
-mvn -q -o compile
-java -cp target/classes pricing.Checkout
+mvn -q compile
+java -cp target/classes exercise.Checkout
 ```
 
-`expected/test-summary.txt` shows the finished result, including the eight lines the program prints.
+When every task is done, it prints these eight lines:
+
+```
+Flat: 15.0
+Percent: 18.0
+Lambda: 20.0
+Capped: 12.0
+Coded: 15.0
+Labels: price rule / percent off
+Describe: flat discount
+Order: Order[id=A1, amount=20.0]
+```
 
 ## Troubleshooting
 
-- **`there is no POM in this directory`.** The terminal is not in `starter`. From the lab folder, run `cd starter` and try again.
 - **`COMPILATION ERROR`.** Your code does not compile yet. Maven names the file, then `[line,column]`, then the problem. Fix that line and run the tests again.
-- **`mvn: command not found`, or `'mvn' is not recognized`.** Maven's `bin` folder is not on your `PATH`. Add it, then open a new terminal.
-- **`mvn -v` shows a Java version other than 25, or you see `release version 25 not supported`.** Maven uses the JDK named by `JAVA_HOME` when it is set, otherwise the `java` on your `PATH`. Set `JAVA_HOME` to your JDK 25 folder, or unset it, then open a new terminal. Check with `java -version` and `mvn -v`.
-- **`Cannot access central in offline mode`, or a missing artifact.** The setup step has not finished. Run `mvn -q dependency:go-offline` once while online.
-
-## Cleanup (optional)
-
-Maven writes only the `starter/target` folder, and Git already ignores it.
-To delete it, run `rm -rf target` from `starter`. In Windows PowerShell, run `Remove-Item -Recurse -Force target`.

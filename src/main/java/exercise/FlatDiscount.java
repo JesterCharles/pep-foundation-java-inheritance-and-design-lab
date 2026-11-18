@@ -1,4 +1,4 @@
-package pricing;
+package exercise;
 
 /**
  * Task 1b: a named rule that takes a fixed amount off the price.
